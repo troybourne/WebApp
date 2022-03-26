@@ -4,21 +4,21 @@ function doGet(e) {
   if (!e.parameter.page) 
   {
     var htmlOutput =  HtmlService.createTemplateFromFile('Index');
-    htmlOutput.message = "You aren't signed in. Please sign in";
+    htmlOutput.message = '';
     return htmlOutput.evaluate();
   }
-  else if(e.parameter['page'] == 'Page1')
+  else if(e.parameter['page'] == 'Link 1')
   {
     Logger.log(JSON.stringify(e));
-    var htmlOutput =  HtmlService.createTemplateFromFile('Page1');
-    htmlOutput.firstName = e.parameter['firstName'];
+    var htmlOutput =  HtmlService.createTemplateFromFile('Link 1');
+    htmlOutput.firstname = e.parameter['firstname'];
     htmlOutput.lastname = e.parameter['lastname'];
     return htmlOutput.evaluate();  
   }
-  else if(e.parameter['page'] == 'Page2')
+  else if(e.parameter['page'] == 'Link 2')
   {
-    var htmlOutput =  HtmlService.createTemplateFromFile('Page2');
-    htmlOutput.firstName = e.parameter['firstName'];
+    var htmlOutput =  HtmlService.createTemplateFromFile('Link 2');
+    htmlOutput.firstname = e.parameter['firstname'];
     htmlOutput.lastname = e.parameter['lastname'];
     return htmlOutput.evaluate();  
   } 
