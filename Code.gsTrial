@@ -1,0 +1,37 @@
+var url="https://docs.google.com/spreadsheets/d/1axIwMUU6EbUoCziajHv4qS8X8IcOAtYO3bi4yNwq44c/edit#gid=0"
+//this was derived from dynamicSinglePageTest
+function doGet(e) {
+  if (!e.parameter.page) 
+  {
+    var htmlOutput =  HtmlService.createTemplateFromFile('Index');
+    htmlOutput.message = "You aren't signed in. Please sign in";
+    return htmlOutput.evaluate();
+  }
+  else if(e.parameter['page'] == 'Page1')
+  {
+    Logger.log(JSON.stringify(e));
+    var htmlOutput =  HtmlService.createTemplateFromFile('Page1');
+    htmlOutput.firstName = e.parameter['firstName'];
+    htmlOutput.lastname = e.parameter['lastname'];
+    return htmlOutput.evaluate();  
+  }
+  else if(e.parameter['page'] == 'Page2')
+  {
+    var htmlOutput =  HtmlService.createTemplateFromFile('Page2');
+    htmlOutput.firstName = e.parameter['firstName'];
+    htmlOutput.lastname = e.parameter['lastname'];
+    return htmlOutput.evaluate();  
+  } 
+  else if(e.parameter['page'] == 'Index')
+  {
+    var htmlOutput =  HtmlService.createTemplateFromFile('Index');
+    htmlOutput.message = e.parameter['message'];
+    return htmlOutput.evaluate();  
+  }   
+}
+
+
+function getUrl() {
+ var url = ScriptApp.getService().getUrl();
+ return url;
+}
