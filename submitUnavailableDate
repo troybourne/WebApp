@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top">
+  <style>
+  .form-r{
+  margin-bottom:20px;
+  }
+  </style>
+</head>
+
+<body>
+  <h1>Submit Unavailable Date</h1>
+  <div class="form-r">
+    <label>First Name:</label><input type="text" id="first">
+      </div>
+      
+        <div class="form-r">
+      <label>Last Name:</label><input type="text" id="last">
+      </div>
+       <div class="form-r">
+      <label>Unavailable Date:</label><input type=date id="unavailableDate">
+      </div>
+        <div class="form-r">
+          <button id="button">Submit</button>
+          </div>
+          <script>
+            document.getElementById("button").addEventListener("click",addConflictRecord);
+            function addConflictRecord(){
+            var userInfo={};
+            userInfo.firstname = document.getElementById("first").value;
+            userInfo.lastname = document.getElementById("last").value;
+            userInfo.unavailableDate = document.getElementById("unavailableDate").value;
+            google.script.run.userConflictClicked(userInfo);
+            document.getElementById("first").value="";
+            document.getElementById("last").value="";
+            document.getElementById("unavailableDate").value="";
+          }
+          
+          </script>
+  </body>
+</html>
